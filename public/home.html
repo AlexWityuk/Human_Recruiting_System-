@@ -1,0 +1,48 @@
+<div class="nav_bar" ng-controller="createController">
+    <button type="button" class="btn btn-success"  ng-click="createCompetitor()">Добавить соискателя</button>
+</div>
+<div class="search">
+    <form class="form-inline">
+        <div class="form-group serchform-wrap">
+            <input type="text" class="form-control" id="inputsearch"
+                   placeholder="Имя Фамилия контакты навыки разделенные пробелами"
+                   name="search" ng-model="search">
+        </div>
+        <a href="#/search/users"><button type="submit" class="btn btn-default" ng-click="serachCompetitor()">Поиск</button></a>
+    </form>
+</div>
+<h1>Список соискателей</h1>
+<table class="table table-striped" id="competitors-table">
+    <thead>
+    <tr>
+        <th>Удалить</th>
+        <th>Имя, фамилия соискателя</th>
+        <th>Дата добавления</th>
+        <th>Список из трех наилучших навыков</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  ng-repeat="user in users  track by $index">
+        <td>
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-danger" ng-click="deleteCompetitor($index)">Удалить</button>
+                <input type="hidden" class="form-control" name="deleteCompetitorId_{{$index}}" value="{{user.id}}">
+            </div>
+        </td>
+        <td><a href="#/user/{{ user.id }}">{{ user.fio }}</a></td>
+        <td>{{ user.datein | date }}</td>
+        <td>
+            <div  ng-repeat="skill in user.skillname  track by $index">
+                <p>{{skill}}</p>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div class="pager">
+    <ul>
+        <li id="page_num" ng-repeat="page in pages">
+            <a href="#/users/{{page + 1}}" ng-click="pageActive($event)">{{page + 1}}</a>
+        </li>
+    </ul>
+</div>

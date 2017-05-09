@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>NodeJSриложение</title>
+    <link rel='stylesheet' href='/css/style.css' />
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="/bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="/js/script.js"></script>
+</head>
+<body>
+<div class="to_homepage">
+    <a href="#/"><button type="button" class="btn btn-warning">На главную страницу</button></a>
+</div>
+<section ng-view class="myapp_competitor"></section>
+<div id="overlay" ng-controller="createController">
+    <div>
+        <div class="col-sm-10"></div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-danger" ng-click="Redirect_to_home()">Вернуться на главную</button>
+        </div>
+    </div>
+    <div class="mypopup">
+        <div ng-include="'userform.html'"></div>
+    </div>
+</div>
+</body>
+</html>

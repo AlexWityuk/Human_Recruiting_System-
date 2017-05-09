@@ -1,0 +1,108 @@
+<div class="popup_content">
+    <form class="form-horizontal" name="myForm" ng-submit="submitForm()">
+        <div class="form-group">
+            <label for="inputName" class="col-sm-2 control-label">Имя</label>
+            <div class="col-sm-10">
+                <input type="hidden" class="form-control" name="userid" value="{{datauser.id}}">
+                <input type="text" class="form-control"  name="Nameupdate" value="{{datauser.fio[0]}}"
+                       ng-model="modelForm.Nameupdate" ng-pattern="regex" required ng-trim="false">
+                <span class="error" ng-show="myForm.Nameupdate.$error.pattern">Имя должно быть без пробелов!</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputFamily" class="col-sm-2 control-label">Фамилия</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control"  name="Familyupdate" value="{{datauser.fio[1]}}"
+                       ng-model="modelForm.Familyupdate" ng-pattern="regex" required ng-trim="false">
+                <span class="error" ng-show="myForm.Familyupdate.$error.pattern">Фамилия должна быть без пробелов!</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputContacts" class="col-sm-2 control-label" id="label-table-popup">Список контактов</label>
+            <div class="col-sm-10">
+                <table class="table table-popup table-contacts">
+                    <thead>
+                    <tr>
+                        <th>Тип контакта</th>
+                        <th>Контактные данные</th>
+                        <th>Удалить</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="contact in datauser.contacts">
+                        <td>
+                            <input type="hidden" class="form-control" name="contactid" value="{{contact[0]}}" ng-model="modelForm.contacts[$index][0]">
+                            <input type="text" class="form-control" name="typecontact" value="{{contact[1]}}"
+                                   ng-model="modelForm.contacts[$index][1]" required>
+                        </td>
+                        <td><input type="text" class="form-control" name="contact" value="{{contact[2]}}"
+                                   ng-model="modelForm.contacts[$index][2]" required></td>
+                        <td><button type="button" class="btn btn-danger" ng-click="deletContact($index)">Delete</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <label for="select_type_contact" class="col-sm-2 control-label" id="label-type-contact-select">Контакт</label>
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <select class="form-control" id="select_type_contact" name="select_type_contact">
+                            <option ng-repeat="type in userContactTypes">{{type.types}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-primary" ng-click="addContact()">Добавить контактr</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="skillsList" class="col-sm-2 control-label">Список навыков с оценками</label>
+            <div class="col-sm-10" id="skillsList">
+                <table class="table table-popup">
+                    <thead>
+                    <tr>
+                        <th>Навыки соискателя</th>
+                        <th>Оценка</th>
+                        <th>Удалить</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="skill in datauser.skillname">
+                        <td>
+                            <input type="hidden" class="form-control" name="skillid" value="{{skill[0]}}" ng-model="modelForm.skillname[$index][0]">
+                            <input type="text" class="form-control" name="typeskill" value="{{skill[1]}}"
+                                   ng-model="modelForm.skillname[$index][1]" required>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" name="skill" value="{{skill[2]}}"
+                                   ng-model="modelForm.skillname[$index][2]" min="0" max="10" integer required>
+                            <span class="error" ng-show="myForm.skill.$error.min || myForm.skill.$error.max">
+                                Число должно быть от 1 до 10!</span>
+                        </td>
+                        <td><button type="button" class="btn btn-danger" ng-click="deletSkill($index)">Delete</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <label for="select_type_contact" class="col-sm-2 control-label">Выбрать тип навыка</label>
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <select class="form-control" ng-model="modelSelectSkillNames" id="select_type_skill"
+                                ng-options="skillName as skillName.skillnames for skillName in userSkillNames">
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-primary" ng-click="addSkill()">Добавить навык</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </div>
+        </div>
+    </form>
+</div>
