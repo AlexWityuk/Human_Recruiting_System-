@@ -2,7 +2,7 @@ var express = require('express');
 
 var app = express();
 
-var port = process.env.PORT || 8042;
+var port = process.env.PORT || 5000; //8042;
 var path = require('path');
 
 var morgan = require('morgan');

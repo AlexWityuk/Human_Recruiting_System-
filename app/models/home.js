@@ -5,7 +5,7 @@ var options = {
 };
 
 var pgp = require('pg-promise')(options);
-var connectionString =  'postgres://postgres:1@localhost:5432/nodeсompetitorыs';
+var connectionString =  'postgres://postgres:1@localhost:5432/newdb';
 var db = pgp(connectionString);
 
 function getAllUsers(page, cb) {
