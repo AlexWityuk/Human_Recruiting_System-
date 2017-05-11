@@ -2,6 +2,11 @@
   "name": "mynodemvcapp",
   "version": "0.0.0",
   "private": true,
+  "description": "This example is so cool.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "async": "latest",
     "basic-auth-connect": "latest",
@@ -39,5 +44,9 @@
     "serve-favicon": "~2.3.0",
     "simple-encryptor": "latest",
     "underscore": "latest"
+  },
+  "engines": {
+    "node": "7.8.0",
+    "npm": "4.2.0"
   }
 }
