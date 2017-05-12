@@ -16,8 +16,8 @@ app.config(function($routeProvider, $locationProvider){
         .when('/user/:userId', {
             templateUrl: '/update.html',
             controller: 'updateController'
-        })
-        .otherwise({redirectTo: '/'});
+        });
+        //.otherwise({redirectTo: '/'});
     // enable HTML5mode to disable hashbang urls
     /*$locationProvider.html5Mode({
         enabled: true,
