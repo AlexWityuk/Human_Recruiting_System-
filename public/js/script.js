@@ -32,7 +32,7 @@ app.controller('createController', ['$scope','$http', 'localStorageService','$lo
         $scope.userContactTypes = localStorageService.get('userContactTypes');
         $scope.userSkillNames = localStorageService.get('userSkillNames');
         $scope.regex = /^[a-zA-Z0-9а-яА-Я]*$/;
-        $scope.modelSelectSkillNames=$scope.userSkillNames[1];
+        $scope.modelSelectSkillNames=$scope.userSkillNames[0];
         $scope.modelForm = {
             Nameupdate: "",
             Familyupdate: "",
