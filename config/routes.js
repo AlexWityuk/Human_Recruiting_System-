@@ -10,5 +10,5 @@ router.post('/users', home.createUser);
 router.put('/users/:id', home.updateUser);
 router.delete('/users/:id', home.removeUser);
 router.get('/db', home.createTabales);
-
+router.get('/add/user', home.addUser)
 module.exports = router;

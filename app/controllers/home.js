@@ -67,6 +67,18 @@ function updateUser(req, res, next) {
 		res.send('results');
 	});
 }
+function addUser(req, res, next){
+	var newUser = {
+		'Nameupdate': 'Иван',
+		'Familyupdate': 'Иванов',
+		'contacts': ['телефон','111222'],
+		'skillname': ['javascript',9]
+	}
+	model.createUser(req.body,function (results){
+		res.send('nice');
+		res.end();
+	});
+}
 /******Cascad delete****/
 function removeUser(req, res, next) {
 	var pupID = parseInt(req.params.id);
@@ -81,7 +93,8 @@ module.exports = {
 	createUser: createUser,
 	updateUser: updateUser,
 	removeUser: removeUser,
-	createTabales: createTabales
+	createTabales: createTabales,
+	addUser: addUser
 };
 
     
