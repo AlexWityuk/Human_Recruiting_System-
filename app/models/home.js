@@ -6,7 +6,6 @@ var options = {
 
 var pgp = require('pg-promise')(options);
 //var connectionString =  'postgres://postgres:1@localhost:5432/newdb';
-//var connectionString =  DATABASE_URL;
 var connectionString = {
     host: 'ec2-54-83-205-71.compute-1.amazonaws.com',
     port: 5432,
