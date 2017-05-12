@@ -207,6 +207,45 @@ function getContactNames (cb){
         .catch(function (err) {
         });
 }
+function createTabales(cb){
+    db.none('CREATE TABLE competitors( '+
+        'fio character varying(250), '+
+        'datein date,dateinterview date,'+
+        'id serial NOT NULL, CONSTRAINT pk_add_id PRIMARY KEY (id)) '+
+    'WITH (OIDS=FALSE); '+
+    'ALTER TABLE competitors '+
+    'OWNER TO postgres;'
+    )
+        .then(function(res){
+            db.none('CREATE TABLE contacts(id serial NOT NULL,' +
+                'type character varying(50),contacts_data character ' +
+                'varying(50),competitor_id integer,CONSTRAINT pk_contacts_id ' +
+                'PRIMARY KEY (id),CONSTRAINT fk_competitors_contacts_id' +
+                ' FOREIGN KEY (competitor_id REFERENCES competitors (id) ' +
+                'MATCH SIMPLEON UPDATE CASCADE ON DELETE CASCADE)' +
+                'WITH (OIDS=FALSE);ALTER TABLE contactsOWNER TO postgres;'
+            )
+            then(
+                db.none('CREATE TABLE skills '+
+                '(id serial NOT NULL, '+
+                'name character varying(250), '+
+                '"number" integer, '+
+                'competitor_id integer, '+
+                'CONSTRAINT pk_skill_id PRIMARY KEY (id), '+
+                'CONSTRAINT fk_competitors_skills_id FOREIGN KEY (competitor_id) '+
+            'REFERENCES competitors (id) MATCH SIMPLE '+
+            'ON UPDATE CASCADE ON DELETE CASCADE '+
+           ' )WITH (OIDS=FALSE);'+
+            'ALTER TABLE skills OWNER TO postgres; '+
+           ' GRANT ALL ON TABLE skills TO postgres; '+
+            'GRANT DELETE, REFERENCES ON TABLE skills TO public;')
+            );
+
+        })
+        .catch(function(err){
+
+        });
+}
 module.exports = {
     selectAllUsers: getAllUsers,
     getSingleUser: getSingleUser,
@@ -216,5 +255,6 @@ module.exports = {
     removeUser: removeUser,
     getContactNames: getContactNames,
     getSkillNames: getSkillNames,
-    getCountUsers: getCountUsers
+    getCountUsers: getCountUsers,
+    createTabales: createTabales
 };

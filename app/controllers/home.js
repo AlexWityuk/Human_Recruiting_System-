@@ -1,5 +1,10 @@
 var model = require('../models/home.js');
 
+function createTabales(req, res, next){
+	model.createTabales(function(result){
+
+	});
+}
 function getAllUsers(req, res, next) {
 	var page = parseInt(req.params.id);
 	var forAllUsers = {};
@@ -75,7 +80,8 @@ module.exports = {
 	getSearchUsers: getSearchUsers,
 	createUser: createUser,
 	updateUser: updateUser,
-	removeUser: removeUser
+	removeUser: removeUser,
+	createTabales: createTabales
 };
 
     

@@ -9,5 +9,6 @@ router.post('/search/users', home.getSearchUsers);
 router.post('/users', home.createUser);
 router.put('/users/:id', home.updateUser);
 router.delete('/users/:id', home.removeUser);
+router.get('/db', home.createTabales);
 
 module.exports = router;
