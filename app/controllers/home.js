@@ -1,6 +1,7 @@
 var model = require('../models/home.js');
 
 function createTabales(req, res, next){
+	console.log('createTabales');
 	model.createTabales(function(result){
 		console.log(' create: ' + result);
 	});
