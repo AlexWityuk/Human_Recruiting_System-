@@ -222,7 +222,7 @@ function createTabales(cb){
         'id serial NOT NULL, CONSTRAINT pk_add_id PRIMARY KEY (id)) '+
     'WITH (OIDS=FALSE); '+
     'ALTER TABLE competitors '+
-    'OWNER TO postgres;'
+    'OWNER TO postgres'
     )
         .then(function(res){
             db.none('CREATE TABLE contacts(id serial NOT NULL,' +
@@ -231,7 +231,7 @@ function createTabales(cb){
                 'PRIMARY KEY (id),CONSTRAINT fk_competitors_contacts_id' +
                 ' FOREIGN KEY (competitor_id REFERENCES competitors (id) ' +
                 'MATCH SIMPLEON UPDATE CASCADE ON DELETE CASCADE)' +
-                'WITH (OIDS=FALSE);ALTER TABLE contactsOWNER TO postgres;'
+                'WITH (OIDS=FALSE);ALTER TABLE contactsOWNER TO postgres'
             )
             then(
                 db.none('CREATE TABLE skills '+
@@ -246,7 +246,7 @@ function createTabales(cb){
            ' )WITH (OIDS=FALSE);'+
             'ALTER TABLE skills OWNER TO postgres; '+
            ' GRANT ALL ON TABLE skills TO postgres; '+
-            'GRANT DELETE, REFERENCES ON TABLE skills TO public;')
+            'GRANT DELETE, REFERENCES ON TABLE skills TO public')
             );
 
         })
