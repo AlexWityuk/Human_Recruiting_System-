@@ -216,7 +216,7 @@ function getContactNames (cb){
         });
 }
 function createTabales(cb){
-    db.none('CREATE TABLE competitors( '+
+    db.one('CREATE TABLE competitors( '+
         'fio character varying(250), '+
         'datein date,dateinterview date,'+
         'id serial NOT NULL, CONSTRAINT pk_add_id PRIMARY KEY (id)) '+
@@ -225,7 +225,7 @@ function createTabales(cb){
     'OWNER TO postgres'
     )
         .then(function(res){
-            db.none('CREATE TABLE contacts(id serial NOT NULL,' +
+            db.one('CREATE TABLE contacts(id serial NOT NULL,' +
                 'type character varying(50),contacts_data character ' +
                 'varying(50),competitor_id integer,CONSTRAINT pk_contacts_id ' +
                 'PRIMARY KEY (id),CONSTRAINT fk_competitors_contacts_id' +
@@ -234,7 +234,7 @@ function createTabales(cb){
                 'WITH (OIDS=FALSE);ALTER TABLE contactsOWNER TO postgres'
             )
             then(
-                db.none('CREATE TABLE skills '+
+                db.one('CREATE TABLE skills '+
                 '(id serial NOT NULL, '+
                 'name character varying(250), '+
                 '"number" integer, '+
@@ -247,6 +247,9 @@ function createTabales(cb){
             'ALTER TABLE skills OWNER TO postgres; '+
            ' GRANT ALL ON TABLE skills TO postgres; '+
             'GRANT DELETE, REFERENCES ON TABLE skills TO public')
+                    .then(function(res){
+                        cb('tables is create!!');
+                    })
             );
 
         })

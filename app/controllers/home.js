@@ -2,7 +2,7 @@ var model = require('../models/home.js');
 
 function createTabales(req, res, next){
 	model.createTabales(function(result){
-
+		console.log(' create: ' + result);
 	});
 }
 function getAllUsers(req, res, next) {
