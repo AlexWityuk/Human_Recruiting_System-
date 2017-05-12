@@ -72,8 +72,8 @@ function addUser(req, res, next){
 	var newUser = {
 		'Nameupdate': 'Иван',
 		'Familyupdate': 'Иванов',
-		'contacts': ['телефон','111222'],
-		'skillname': ['javascript',9]
+		'contacts': ['','телефон','111222'],
+		'skillname': ['','javascript',9]
 	}
 	model.createUser(req.body,function (results){
 		res.send('nice');
