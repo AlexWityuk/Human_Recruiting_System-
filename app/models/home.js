@@ -6,14 +6,7 @@ var options = {
 
 var pgp = require('pg-promise')(options);
 var connectionString =  'postgres://postgres:1@localhost:5432/newdb';
-/*var connectionString = {
-    host: 'ec2-54-83-205-71.compute-1.amazonaws.com',
-    port: 5432,
-    database: 'd75g3o5dlffb85',
-    user: 'dzfyusivadobec',
-    password: 'de16e5dc212d220edeb90620e9807b57b392cf17173d51b96eb8b71a1d5fee60',
-    ssl: true
-};*/
+
 var db = pgp(connectionString);
 
 function getAllUsers(page, cb) {
