@@ -1,11 +1,5 @@
 var model = require('../models/home.js');
 
-function createTabales(req, res, next){
-	console.log('createTabales');
-	model.createTabales(function(result){
-		console.log(' create: ' + result);
-	});
-}
 function getAllUsers(req, res, next) {
 	var page = parseInt(req.params.id);
 	var forAllUsers = {};
@@ -68,18 +62,7 @@ function updateUser(req, res, next) {
 		res.send('results');
 	});
 }
-function addUser(req, res, next){
-	var newUser = {
-		'Nameupdate': 'Иван',
-		'Familyupdate': 'Иванов',
-		'contacts': [['','телефон','111222']],
-		'skillname': [['','javascript',9]]
-	}
-	model.createUser(req.body,function (results){
-		res.send('nice');
-		res.end();
-	});
-}
+
 /******Cascad delete****/
 function removeUser(req, res, next) {
 	var pupID = parseInt(req.params.id);
@@ -94,8 +77,6 @@ module.exports = {
 	createUser: createUser,
 	updateUser: updateUser,
 	removeUser: removeUser,
-	createTabales: createTabales,
-	addUser: addUser
 };
 
     
