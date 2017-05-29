@@ -24,7 +24,7 @@ app.config(function($routeProvider, $locationProvider){
         requireBase: false
     });*/
 });
-app.controller('createController', ['$scope','$http', 'localStorageService','$location',
+/*app.controller('createController', ['$scope','$http', 'localStorageService','$location',
     function ($scope, $http, localStorageService, $location) {
         $scope.datauser = {};
         $scope.datauser.contacts = [];
@@ -68,7 +68,7 @@ app.controller('createController', ['$scope','$http', 'localStorageService','$lo
         }
     }
     /********Add Competitior***************/
-    $scope.submitForm = function(){
+    /*$scope.submitForm = function(){
         var id = $('input[name=userid]').val();
         id = parseInt(id);
         console.log($scope.modelForm);
@@ -91,36 +91,36 @@ app.controller('createController', ['$scope','$http', 'localStorageService','$lo
     $scope.Redirect_to_home = function(){
         angular.element('#overlay').css('display','none');
     }
-}]);
-app.controller('searchController', ['$scope','$http','$location','Service','localStorageService',
+}]);*/
+/*app.controller('searchController', ['$scope','$http','$location','Service','localStorageService',
     function ($scope, $http, $location, Service, localStorageService) {
-    //var data = Service.getDataSearch();
-    var data = localStorageService.get('dataSearch');
-    console.log(data);
-    $http({
+        //var data = Service.getDataSearch();
+        var data = localStorageService.get('dataSearch');
+        console.log(data);
+        $http({
             method  : 'POST',
             url     : '/search/users',
             data:  data,
             headers : { 'Content-Type': 'application/json' }
         })
-        .success(function(data, status) {
-            console.log(data);
-            $scope.users = data;
-        })
-        .error(function(data) {
-            console.log('Error: ' + data);
-        });
-    $scope.serachCompetitor = function() {
-        var data = {
-            search: $scope.search
-        };
-        localStorageService.remove('dataSearch');
-        localStorageService.set('dataSearch', data);
-        window.location.reload();
-    }
-}]);
+            .success(function(data, status) {
+                console.log(data);
+                $scope.users = data;
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+        $scope.serachCompetitor = function() {
+            var data = {
+                search: $scope.search
+            };
+            localStorageService.remove('dataSearch');
+            localStorageService.set('dataSearch', data);
+            window.location.reload();
+        }
+    }]);*/
 /*************MainController******************************/
-app.controller('MainController', ['$scope','$http','Service','localStorageService','$routeParams',
+/*app.controller('MainController', ['$scope','$http','Service','localStorageService','$routeParams',
     function ($scope, $http, Service, localStorageService, $routeParams) {
     var page = $routeParams.page
         console.log("page: " + page);
@@ -160,10 +160,10 @@ app.controller('MainController', ['$scope','$http','Service','localStorageServic
     $scope.pageActive = function(event){
         $(event.target).addClass('active');
     }
-}]);
+}]);*/
 /************End MainController***************************/
 /*******updateController******************************/
-app.controller('updateController', ['$scope','$http','$routeParams','$location',
+/*app.controller('updateController', ['$scope','$http','$routeParams','$location',
     function ($scope, $http, $routeParams, $location) {
 
     var id = $routeParams.userId;
@@ -226,7 +226,7 @@ app.controller('updateController', ['$scope','$http','$routeParams','$location',
                 this.datauser.skillname.splice(index, 1);
             }
         }
-}]);
+}]);*/
 app.service('Service', function() {
     /*var dataSearch;
 
